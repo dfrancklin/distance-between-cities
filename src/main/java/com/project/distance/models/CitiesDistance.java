@@ -2,8 +2,10 @@ package com.project.distance.models;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 
 @XmlRootElement(name="cities-distance")
+@XmlSeeAlso(City.class)
 public class CitiesDistance {
 
 	private City cityA;
@@ -18,12 +20,6 @@ public class CitiesDistance {
 		this.cityA = cityA;
 		this.cityB = cityB;
 		this.distance = distance;
-	}
-
-	public CitiesDistance(City cityA, City cityB) {
-		this.cityA = cityA;
-		this.cityB = cityB;
-		this.distance = 0d;
 	}
 
 	@XmlElement

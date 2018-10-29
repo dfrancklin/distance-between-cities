@@ -10,6 +10,7 @@ import com.project.distance.dao.city.ICityDAO;
 import com.project.distance.models.CitiesDistance;
 import com.project.distance.models.CitiesList;
 import com.project.distance.models.City;
+import com.project.distance.utils.CitiesDistanceCalculator;
 
 @Service
 public class CitiesService implements ICitiesService {
@@ -23,7 +24,7 @@ public class CitiesService implements ICitiesService {
 		
 		try {
 			unity = AllowedUnities.valueOf(informedUnity.toUpperCase());
-		}catch (Exception e) {
+		} catch (Exception e) {
 			throw new IllegalArgumentException("Unity \"" + informedUnity + "\" not recognized. "
 					+ "The accepted unities are \"KM (Kilometers)\" and \"MI (Miles)\"");
 		}
@@ -45,12 +46,14 @@ public class CitiesService implements ICitiesService {
 
 	private List<CitiesDistance> combineCities(List<City> cities, AllowedUnities unity) {
 		List<CitiesDistance> citiesDistances = new ArrayList<>();
+		CitiesDistanceCalculator calculator = new CitiesDistanceCalculator(unity);
 		
 		for (int indexA = 0; indexA < cities.size(); indexA++) {
 			for (int indexB = indexA + 1; indexB < cities.size(); indexB++) {
 				City cityA = cities.get(indexA);
 				City cityB = cities.get(indexB);
-				Double distance = calculateDistance(cityA, cityB, unity);
+				Double distance = calculator.calculate(cityA, cityB);
+				
 				CitiesDistance citiesDistance = new CitiesDistance(cityA, cityB, distance);
 				
 				citiesDistances.add(citiesDistance);
@@ -58,16 +61,6 @@ public class CitiesService implements ICitiesService {
 		}
 		
 		return citiesDistances;
-	}
-
-	private Double calculateDistance(City cityA, City cityB, AllowedUnities unity) {
-		if (AllowedUnities.KM.equals(unity)) {
-			return 68d;
-		} else if (AllowedUnities.MI.equals(unity)) {
-			return 30d;
-		} else {
-			return 0d;
-		}
 	}
 
 	public enum AllowedUnities {

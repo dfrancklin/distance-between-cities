@@ -1,28 +1,50 @@
 package com.project.distance.dao.city;
 
 import java.sql.Connection;
-import java.util.Arrays;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.project.distance.dao.DAO;
 import com.project.distance.models.City;
 
 @Component
-public class CityDAO implements ICityDAO {
-
-	@Autowired
-	private Connection connection;
+public class CityDAO extends DAO implements ICityDAO {
 
 	@Override
 	public List<City> listAll() throws Exception {
-		connection.prepareStatement("SHOW TABLES");
-		List<City> cities = Arrays.asList(
-			new City(1, "Sorocity"),
-			new City(1, "AlphaHell"),
-			new City(1, "Barueri")
-		);
+		String sql = "SELECT * FROM city";
+		Connection connection = openConnection();
+		PreparedStatement prepareStatement = connection.prepareStatement(sql);
+		ResultSet rs = prepareStatement.executeQuery();
+		
+		List<City> cities = mapResult(rs);
+		
+		connection.close();
+		prepareStatement.close();
+		rs.close();
+		
+		return cities;
+	}
+
+	private List<City> mapResult(ResultSet rs) throws Exception {
+		List<City> cities = new ArrayList<>();
+		
+		City city = null;
+		
+		while (rs.next()) {
+			city = new City();
+			
+			city.setId(rs.getInt("id"));
+			city.setName(rs.getString("name"));
+			city.setLatitude(rs.getDouble("latitude"));
+			city.setLongitude(rs.getDouble("longitude"));
+			
+			cities.add(city);
+		}
 		
 		return cities;
 	}

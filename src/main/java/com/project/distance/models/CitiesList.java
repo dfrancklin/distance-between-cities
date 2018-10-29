@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 @XmlSeeAlso(CitiesDistance.class)
 public class CitiesList {
 
-	List<CitiesDistance> cities;
+	private List<CitiesDistance> cities;
 
 	public CitiesList() {
 		cities = new ArrayList<>();
@@ -21,9 +21,13 @@ public class CitiesList {
 		this.cities = cities;
 	}
 
-	@XmlElement
+	@XmlElement(name="cities-distance")
 	public List<CitiesDistance> getCities() {
 		return cities;
+	}
+
+	public void setCities(List<CitiesDistance> cities) {
+		this.cities = cities;
 	}
 
 }
