@@ -13,12 +13,28 @@ import com.project.distance.builders.ResponseBuilder;
 import com.project.distance.models.CitiesList;
 import com.project.distance.services.ICitiesService;
 
+/**
+ * This is the main controller
+ * 
+ * @author Diego Francklin Martins dos Santos
+ */
 @RestController
 public class MainController {
 
 	@Autowired
 	private ICitiesService service;
 
+	/**
+	 * Answers the request with a list of cities, combined
+	 * in pairs and with the distance between them
+	 * 
+	 * @param unity
+	 * @param mediaType
+	 * 
+	 * @return ResponseEntity<CitiesList>
+	 * 
+	 * @throws Exception
+	 */
 	@RequestMapping(
 		value="/{unity}/{mediaType}",
 		method=RequestMethod.GET,

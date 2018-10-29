@@ -7,6 +7,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
+/**
+ * Represent the list of the distances between cities
+ * 
+ * @see CitiesDistance
+ * 
+ * @author Diego Francklin Martins dos Santos
+ */
 @XmlRootElement(name="cities-list")
 @XmlSeeAlso(CitiesDistance.class)
 public class CitiesList {

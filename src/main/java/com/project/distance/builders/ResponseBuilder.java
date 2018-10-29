@@ -5,6 +5,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
+/**
+ * Builds the response with the options 
+ * informed (content type, http status and response body)
+ * 
+ * @author Diego Francklin Martins dos Santos
+ *
+ * @param <T>
+ */
 public class ResponseBuilder<T> {
 
 	private MediaType mediaType;
@@ -17,6 +25,13 @@ public class ResponseBuilder<T> {
 		httpStatus = HttpStatus.OK;
 	}
 
+	/**
+	 * Sets content type of the response
+	 * 
+	 * @param body
+	 * 
+	 * @return ResponseBuilder<T>
+	 */
 	public ResponseBuilder<T> setContentType(String mediaType) {
 		try {
 			this.mediaType = AllowedMediaTypes.valueOf(mediaType.toUpperCase()).getMediaType();
@@ -28,18 +43,37 @@ public class ResponseBuilder<T> {
 		return this;
 	}
 
+	/**
+	 * Sets the http status of the response
+	 * 
+	 * @param body
+	 * 
+	 * @return ResponseBuilder<T>
+	 */
 	public ResponseBuilder<T> setHttpStatus(HttpStatus httpStatus) {
 		this.httpStatus = httpStatus;
 		
 		return this;
 	}
 
+	/**
+	 * Sets the body of the response
+	 * 
+	 * @param body
+	 * 
+	 * @return ResponseBuilder<T>
+	 */
 	public ResponseBuilder<T> setBody(T body) {
 		this.body = body;
 		
 		return this;
 	}
 
+	/**
+	 * Builds the response with the options informed
+	 * 
+	 * @return ResponseEntity<T>
+	 */
 	public ResponseEntity<T> build() {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(mediaType);
@@ -47,6 +81,11 @@ public class ResponseBuilder<T> {
 		return new ResponseEntity<T>(body, headers, httpStatus);
 	}
 
+	/**
+	 * Enum that indicates the allowed media types
+	 * 
+	 * @author Diego Francklin Martins dos Santos
+	 */
 	public enum AllowedMediaTypes {
 		
 		JSON(MediaType.APPLICATION_JSON_UTF8),

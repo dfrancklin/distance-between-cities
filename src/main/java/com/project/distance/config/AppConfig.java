@@ -21,6 +21,11 @@ import com.project.distance.models.City;
 import com.project.distance.resolvers.JsonViewResolver;
 import com.project.distance.resolvers.XmlViewResolver;
 
+/**
+ * Configurantion class of the application
+ * 
+ * @author Diego Francklin Martins dos Santos
+ */
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages={
@@ -30,6 +35,9 @@ import com.project.distance.resolvers.XmlViewResolver;
 })
 public class AppConfig implements WebMvcConfigurer {
 
+	/**
+	 * Configure the content negotiation
+	 */
 	@Override
 	public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
 		configurer
@@ -42,6 +50,13 @@ public class AppConfig implements WebMvcConfigurer {
 		;
 	}
 
+	/**
+	 * Sets the view resolvers that the application can use
+	 * 
+	 * @param manager
+	 * 
+	 * @return ViewResolver
+	 */
 	@Bean
 	public ViewResolver contentNegotiatingViewResolver(ContentNegotiationManager manager) {
 		ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
@@ -53,11 +68,21 @@ public class AppConfig implements WebMvcConfigurer {
 		return resolver;
 	}
 
+	/**
+	 * Creantes the json view resolver
+	 * 
+	 * @return ViewResolver
+	 */
 	@Bean
 	public ViewResolver jsonViewResolver() {
 		return new JsonViewResolver();
 	}
 
+	/**
+	 * Creantes the xml view resolver
+	 * 
+	 * @return ViewResolver
+	 */
 	@Bean
 	public ViewResolver xmlViewResolver() {
 		Jaxb2Marshaller marshaller = new Jaxb2Marshaller();

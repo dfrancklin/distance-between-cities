@@ -5,13 +5,22 @@ import java.sql.DriverManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class DAO {
+/**
+ * Defines the common methods between the Data Access Objects
+ * 
+ * @author Diego Francklin Martins dos Santos
+ */
+public abstract class DAO {
 
 	@Autowired
 	private ConnectionInfo info;
 
 	public Connection openConnection() throws Exception {
-		return DriverManager.getConnection(info.getUrl(), info.getUsername(), info.getPassword());
+		return DriverManager.getConnection(
+			info.getUrl(),
+			info.getUsername(),
+			info.getPassword()
+		);
 	}
 
 }

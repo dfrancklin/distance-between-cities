@@ -2,7 +2,11 @@ package com.project.distance.models;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-// CITY [id, name, latitude, longitude]
+/**
+ * Represents a city in the database
+ * 
+ * @author Diego Francklin Martins dos Santos
+ */
 @XmlRootElement(name="city")
 public class City {
 

@@ -12,12 +12,26 @@ import com.project.distance.models.CitiesList;
 import com.project.distance.models.City;
 import com.project.distance.utils.CitiesDistanceCalculator;
 
+/**
+ * This service list all the cities, combine them 
+ * into pairs and calculates the distance between them
+ * 
+ * @author Diego Francklin Martins dos Santos
+ */
 @Service
 public class CitiesService implements ICitiesService {
 
 	@Autowired
 	private ICityDAO dao;
 
+	/**
+	 * Returns the list of cities combined into pairs and the given distance between
+	 * the two cities in an predetermined unity (KM or MI)
+	 * 
+	 * @param informedUnity
+	 * 
+	 * @return CitiesList
+	 */
 	@Override
 	public CitiesList combinedCitiesWithDistance(String informedUnity) throws Exception {
 		AllowedUnities unity;
@@ -44,6 +58,20 @@ public class CitiesService implements ICitiesService {
 		return cityList;
 	}
 
+	/**
+	 * Algorithm that combines a list of cities into pairs without repetitions,
+	 * for instance, combine the cities A, B and C:
+	 *   A B
+	 *   A C
+	 *   B C
+	 * The combinations "A A" or "B A" would be a repetition, therefore, these 
+	 * kind of combination are ignored
+	 * 
+	 * @param cities
+	 * @param unity
+	 * 
+	 * @return
+	 */
 	private List<CitiesDistance> combineCities(List<City> cities, AllowedUnities unity) {
 		List<CitiesDistance> citiesDistances = new ArrayList<>();
 		CitiesDistanceCalculator calculator = new CitiesDistanceCalculator(unity);
@@ -63,6 +91,12 @@ public class CitiesService implements ICitiesService {
 		return citiesDistances;
 	}
 
+	/**
+	 * Enum indicates the allowed unities
+	 * 
+	 * @author Diego Francklin Martins dos Santos
+	 *
+	 */
 	public enum AllowedUnities {
 		KM, MI
 	}

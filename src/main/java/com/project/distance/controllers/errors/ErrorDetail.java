@@ -2,6 +2,11 @@ package com.project.distance.controllers.errors;
 
 import java.util.Calendar;
 
+/**
+ * Represents an error response
+ * 
+ * @author Diego Francklin Martins dos Santos
+ */
 public class ErrorDetail {
 
 	private Calendar timestamp;

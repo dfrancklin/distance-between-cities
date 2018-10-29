@@ -5,6 +5,12 @@ import javax.validation.constraints.NotNull;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+/**
+ * Represents the connection information that can be found
+ * at the "application.properties"
+ * 
+ * @author Diego Francklin Martins dos Santos
+ */
 @Component
 @ConfigurationProperties("connection")
 public class ConnectionInfo {

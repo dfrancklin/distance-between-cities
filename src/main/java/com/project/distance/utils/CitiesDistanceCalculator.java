@@ -3,6 +3,11 @@ package com.project.distance.utils;
 import com.project.distance.models.City;
 import com.project.distance.services.CitiesService.AllowedUnities;
 
+/**
+ * Calculates the distance between to cities
+ * 
+ * @author Diego Francklin Martins dos Santos
+ */
 public class CitiesDistanceCalculator {
 
 	private AllowedUnities unity;
@@ -11,6 +16,15 @@ public class CitiesDistanceCalculator {
 		this.unity = unity;
 	}
 
+	/**
+	 * Calculates the distance between to given cities (cityA, cityB)
+	 * in a given unity (KM or MI)
+	 * 
+	 * @param cityA
+	 * @param cityB
+	 * 
+	 * @return
+	 */
 	public Double calculate(City cityA, City cityB) {
 		// Conversão de graus pra radianos das latitudes
 		double latitudeAInRad = Math.toRadians(cityA.getLatitude());
@@ -37,6 +51,11 @@ public class CitiesDistanceCalculator {
 		;
 	}
 
+	/**
+	 * Enum that indicates the radius of the earth in Kilometers or Miles
+	 * 
+	 * @author Diego Francklin Martins dos Santos
+	 */
 	public enum EarthRadius {
 		
 		KM(6371), MI(3959);

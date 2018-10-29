@@ -4,6 +4,11 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
+/**
+ * Represents the distance between two cities
+ * 
+ * @author Diego Francklin Martins dos Santos
+ */
 @XmlRootElement(name="cities-distance")
 @XmlSeeAlso(City.class)
 public class CitiesDistance {

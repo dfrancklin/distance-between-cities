@@ -11,9 +11,20 @@ import org.springframework.stereotype.Component;
 import com.project.distance.dao.DAO;
 import com.project.distance.models.City;
 
+/**
+ * Make the access to the database, especific the
+ * the table "city"
+ * 
+ * @author Diego Francklin Martins dos Santos
+ */
 @Component
 public class CityDAO extends DAO implements ICityDAO {
 
+	/**
+	 * Method that lists all the cities into the table "city"
+	 * 
+	 * @return List<City>
+	 */
 	@Override
 	public List<City> listAll() throws Exception {
 		String sql = "SELECT * FROM city";
@@ -30,6 +41,15 @@ public class CityDAO extends DAO implements ICityDAO {
 		return cities;
 	}
 
+	/**
+	 * Maps the list of cities
+	 * 
+	 * @param rs
+	 * 
+	 * @return List<City>
+	 * 
+	 * @throws Exception
+	 */
 	private List<City> mapResult(ResultSet rs) throws Exception {
 		List<City> cities = new ArrayList<>();
 		
