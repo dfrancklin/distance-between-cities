@@ -24,10 +24,10 @@ The parameter "unity" expects to receive the values "km" to calculates the dista
 The parameter "mediaType" expects to receive the values "json" or "xml" to answer in the respective format.
 
 Possible requests:
-http://localhost:8080/km/json
-http://localhost:8080/km/xml
-http://localhost:8080/mi/json
-http://localhost:8080/mi/xml
+* http://localhost:8080/km/json
+* http://localhost:8080/km/xml
+* http://localhost:8080/mi/json
+* http://localhost:8080/mi/xml
 
 ## SQL
 
