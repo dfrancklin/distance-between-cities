@@ -3,11 +3,16 @@
 O objeto do projeto é disponibilizar um webservice que retorne uma lista de cidades, combinadas em pares e com suas respectivas distâncias entre elas.
 
 Por exemplo:
- Considere as cidades: A, B e C
- O retorno do webservice deverá ser:
-  A B 20 (onde 20 é a distância entre as duas cidades)
-  A C 30
-  B C 10
+
+Considere as cidades: A, B e C
+
+O retorno do webservice deverá ser:
+
+```
+A B 20 // Onde 20 é a distância entre as duas cidades
+A C 30
+B C 10
+```
 
 A distância pode ser retornada em quilômetros ou milhas e no formato JSON ou XML, de acordo com o que for informado na requisição.
 

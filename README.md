@@ -3,11 +3,16 @@
 The objective of this project is to provide a webservice that returns a list of cities, combined in pairs and the given distance between them.
 
 For instance:
- Consider the cities: A, B e C
- The return of the webservice will be:
-  A B 20 (Where 20 is the distance between the two cities)
-  A C 30
-  B C 10
+
+Consider the cities: A, B e C
+
+The return of the webservice will be:
+
+```
+A B 20 // Where 20 is the distance between the two cities
+A C 30
+B C 10
+```
 
 The distance can be returned in kilometers or miles and in the JSON or XML format, according to what was informed in the request.
 
