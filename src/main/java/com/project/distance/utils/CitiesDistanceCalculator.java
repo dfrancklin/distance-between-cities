@@ -25,26 +25,27 @@ public class CitiesDistanceCalculator {
 	 * 
 	 * @return
 	 */
-	public Double calculate(City cityA, City cityB) {
-		// Conversão de graus pra radianos das latitudes
+	public double calculate(City cityA, City cityB) {
+		// Converts the latitudes from degrees into radians
 		double latitudeAInRad = Math.toRadians(cityA.getLatitude());
 		double latitudeBInRad = Math.toRadians(cityB.getLatitude());
 		
-		// Diferença das longitudes
+		// Variation of longitudes
 		double deltaLongitude = cityB.getLongitude() - cityA.getLongitude();
 		double deltaLongitudeInRad = Math.toRadians(deltaLongitude);
 		
-		// Cálcula da distância entre os pontos
+		// Calculates the sine and cosine
 		double sinLatitudeA = Math.sin(latitudeAInRad);
 		double cosLatitudeA = Math.cos(latitudeAInRad);
 		double sinLatitudeB = Math.sin(latitudeBInRad);
 		double cosLatitudeB = Math.cos(latitudeBInRad);
 		double cosDeltaLongitude = Math.cos(deltaLongitudeInRad);
 		
+		// Gets the Earth radius
 		EarthRadius radius = EarthRadius.valueOf(unity.name());
 		
-		return
-			Math.acos(
+		// Calculates the distance between the coordinates
+		return Math.acos(
 				cosLatitudeA * cosLatitudeB * cosDeltaLongitude +
 				sinLatitudeA * sinLatitudeB
 			) * radius.getRadius()

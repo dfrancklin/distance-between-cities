@@ -17,11 +17,11 @@ public class CitiesDistance {
 
 	private City cityB;
 
-	private Double distance;
+	private double distance;
 
 	public CitiesDistance() {}
 
-	public CitiesDistance(City cityA, City cityB, Double distance) {
+	public CitiesDistance(City cityA, City cityB, double distance) {
 		this.cityA = cityA;
 		this.cityB = cityB;
 		this.distance = distance;
@@ -45,11 +45,11 @@ public class CitiesDistance {
 		this.cityB = cityB;
 	}
 
-	public Double getDistance() {
+	public double getDistance() {
 		return distance;
 	}
 
-	public void setDistance(Double distance) {
+	public void setDistance(double distance) {
 		this.distance = distance;
 	}
 

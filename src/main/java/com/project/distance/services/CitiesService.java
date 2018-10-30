@@ -80,7 +80,7 @@ public class CitiesService implements ICitiesService {
 			for (int indexB = indexA + 1; indexB < cities.size(); indexB++) {
 				City cityA = cities.get(indexA);
 				City cityB = cities.get(indexB);
-				Double distance = calculator.calculate(cityA, cityB);
+				double distance = calculator.calculate(cityA, cityB);
 				
 				CitiesDistance citiesDistance = new CitiesDistance(cityA, cityB, distance);
 				
